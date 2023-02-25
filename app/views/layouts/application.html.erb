@@ -21,7 +21,6 @@
         <!-- font - fontawesome -->
         <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css" />
         
-
         <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
@@ -33,5 +32,23 @@
             <%= render "layouts/shared/mobile_header" %> 
             <%= render "layouts/shared/header" %> 
             <%=yield%>
+        </div>
+        <!-- site / end -->
+            <%= render "layouts/shared/mobile_menu" %>
+            <%= render "layouts/shared/quick_view_modal" %>
+            <%= render "layouts/shared/add_vehicle_modal" %>
+            <%= render "layouts/shared/vehicle_picker_modal" %>
+            <%= render "layouts/shared/photoswipe" %>
+        
+        <!-- scripts -->
+        <script src="/vendor/jquery/jquery.min.js"></script>
+        <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/vendor/owl-carousel/owl.carousel.min.js"></script>
+        <script src="/vendor/nouislider/nouislider.min.js"></script>
+        <script src="/vendor/photoswipe/photoswipe.min.js"></script>
+        <script src="/vendor/photoswipe/photoswipe-ui-default.min.js"></script>
+        <script src="/vendor/select2/js/select2.min.js"></script>
+        <script src="/js/number.js"></script>
+        <script src="/js/main.js"></script>
       </body>
 </html>
