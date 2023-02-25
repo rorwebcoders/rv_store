@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
    
-   devise_for :users, controllers: {
-        sessions: 'users/sessions',
-        registrations: "users/registrations"
-        
-      }
+   devise_for :users, :controllers => {:sessions => "users/sessions", :passwords => "users/passwords", :registrations => "users/registrations"}
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root 'home#index'

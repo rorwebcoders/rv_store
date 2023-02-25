@@ -1,29 +1,40 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+<div class="site__body">
+    <div class="block-space block-space--layout--after-header"></div>
+    <div class="block">
+        <div class="container container--max--lg">
+            <div class="row">
+                <div class="col-md-6 mx-auto d-flex justify-content-center">
+                    <div class="card flex-grow-1 mb-0 ml-0 ml-lg-3 mr-0 mr-lg-4">
+                        <div class="card-body card-body--padding--2">
+                            <h3 class="card-title">Register</h3>
+                            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                              <%= render "users/shared/error_messages", resource: resource %>
+                                <div class="form-group">
+                                  <label for="signup-email">Email address</label> 
+                                  <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "signup-email", class: "form-control", placeholder: "customer@example.com" %>
+                                </div>
+                                <div class="form-group">
+                                  <label for="signup-password">Password</label> 
+                                  <% if @minimum_password_length %>
+                                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                                  <% end %><br />
+                                  <%= f.password_field :password, autocomplete: "new-password", id: "signup-password", class: "form-control", placeholder: "Password" %>
+                                </div>
+                                <div class="form-group">
+                                  <label for="signup-confirm">Repeat password</label> 
+                                  <%= f.password_field :password_confirmation, autocomplete: "new-password", id: "signup-confirm", class: "form-control", placeholder: "Password" %>
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" />
+                                    I agree to these <a href="terms.html">Terms and Conditions</a>.
+                                  </div>
+                                <div class="form-group mb-0"><button type="submit" class="btn btn-primary mt-3">Register</button></div>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="block-space block-space--layout--before-footer"></div>
+</div>
