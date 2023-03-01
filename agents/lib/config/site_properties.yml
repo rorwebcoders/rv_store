@@ -1,8 +1,12 @@
 development:
   turn_14_access_token_api_url: "https://api.turn14.com/v1/token"
   turn_14_all_brand_api_url: "https://api.turn14.com/v1/brands"
+  turn_14_all_items_api_url: "https://api.turn14.com/v1/items?page=~"
+  turn_14_all_data_api_url: "https://api.turn14.com/v1/items/data?page=~"
   turn_14_client_id: "ff2a9f3154d1921e4d8b9a3cddbcd6644738e75a"
   turn_14_client_secret: "0d3ae5a5a8119442fa5efb1c068f5cf0b65e84cb"
+  turn_14_recent_items_api_url: "https://api.turn14.com/v1/items/updates?page=~&days=5"
+  turn_14_item_data_api_url: "https://api.turn14.com/v1/items/data/~"
 
 production:
   turn_14_access_token_api_url: "https://api.turn14.com/v1/token"

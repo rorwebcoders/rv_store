@@ -20,6 +20,7 @@ require File.expand_path('../../lib/config/database_connection', __FILE__)
 require File.expand_path('../../../config/application', __FILE__)
 require File.expand_path('../../../app/models/application_record', __FILE__)
 require File.expand_path('../../../app/models/turn14_brand', __FILE__)
+require File.expand_path('../../../app/models/turn14_product', __FILE__)
 
 
 
