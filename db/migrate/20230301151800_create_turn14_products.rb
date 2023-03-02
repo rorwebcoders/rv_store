@@ -41,8 +41,16 @@ class CreateTurn14Products < ActiveRecord::Migration[6.1]
         t.string :image_9
         t.string :image_10
         t.longtext :description
-
-      t.timestamps
+        t.string :inventory_01
+        t.string :inventory_02
+        t.string :inventory_59
+        t.string :total_inventory
+        t.string :map_price
+        t.string :dealer_price
+        t.string :jobber_price
+        t.string :retail_price
+        t.string :purchase_cost
+        t.timestamps
     end
   end
 end

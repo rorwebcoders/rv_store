@@ -7,6 +7,8 @@ development:
   turn_14_client_secret: "0d3ae5a5a8119442fa5efb1c068f5cf0b65e84cb"
   turn_14_recent_items_api_url: "https://api.turn14.com/v1/items/updates?page=~&days=5"
   turn_14_item_data_api_url: "https://api.turn14.com/v1/items/data/~"
+  turn_14_stock_api_url: "https://api.turn14.com/v1/inventory?page=~"
+  turn_14_pricing_api_url: "https://api.turn14.com/v1/pricing?page=~"
 
 production:
   turn_14_access_token_api_url: "https://api.turn14.com/v1/token"
