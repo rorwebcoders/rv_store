@@ -21,6 +21,10 @@ require File.expand_path('../../../config/application', __FILE__)
 require File.expand_path('../../../app/models/application_record', __FILE__)
 require File.expand_path('../../../app/models/turn14_brand', __FILE__)
 require File.expand_path('../../../app/models/turn14_product', __FILE__)
+require File.expand_path('../../../app/models/category', __FILE__)
+require File.expand_path('../../../app/models/sub_category', __FILE__)
+require File.expand_path('../../../app/models/category_sub_category', __FILE__)
+require File.expand_path('../../../app/models/product', __FILE__)
 
 
 

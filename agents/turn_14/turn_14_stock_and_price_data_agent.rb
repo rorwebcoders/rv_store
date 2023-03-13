@@ -89,6 +89,11 @@ class Turn14BrandDataBuilderAgent
 			          inventory_59 = each_prod['attributes']['inventory']['59'] rescue ''
 			          total_inventory = inventory_01.to_i + inventory_02.to_i + inventory_59.to_i rescue ''
 			          exist_data.update(:inventory_01 => inventory_01, :inventory_02 => inventory_02, :inventory_59 => inventory_59, :total_inventory => total_inventory)
+			          product_data = Product.where(:turn14_id => turn14_id)
+			          byebug
+			          if !product_data.empty?
+			          	product_data.update(:turn14_stock => total_inventory)
+			          end
 			        end
 		      	rescue Exception => e
 		      		$logger.error "Error Occured in getting details in product #{turn14_id} -- #{e}"
@@ -141,6 +146,10 @@ class Turn14BrandDataBuilderAgent
 			         	retail_price = each_prod['attributes']['pricelists'].find{|e| e['name'] == 'Retail'}['price'] rescue ''
 			         	purchase_cost = each_prod['attributes']['purchase_cost'] rescue ''
 			         	exist_data.update(:jobber_price => jobber_price, :map_price => map_price, :dealer_price => dealer_price, :retail_price => retail_price, :purchase_cost => purchase_cost)
+			         	product_data = Product.where(:turn14_id => turn14_id)
+			          if !product_data.empty?
+			          	product_data.update(:turn14_price => purchase_cost)
+			          end
 			        end
 		      	rescue Exception => e
 		      		$logger.error "Error Occured in getting details in product #{turn14_id} -- #{e}"

@@ -93,7 +93,7 @@ class Turn14BrandDataBuilderAgent
 			          part_number = each_prod["attributes"]['part_number'] rescue ""
 			          mpn = each_prod["attributes"]['mfr_part_number'] rescue ""
 			          part_description = each_prod["attributes"]['part_description'] rescue ""
-			          category = each_prod["attributes"]['category'] rescue ""
+			          category_name = each_prod["attributes"]['category'] rescue ""
 			          subcategory = each_prod["attributes"]['subcategory'] rescue ""
 			          box_number = each_prod["attributes"]["dimensions"][0]['box_number'] rescue ""
 			          length = each_prod["attributes"]["dimensions"][0]['length'] rescue ""
@@ -115,7 +115,16 @@ class Turn14BrandDataBuilderAgent
 			          units_per_sku = each_prod["attributes"]['units_per_sku'] rescue ""
 			          clearance_item = each_prod["attributes"]['clearance_item'] rescue ""
 			          barcode = each_prod["attributes"]['barcode'] rescue ""
-			          Turn14Product.create(:turn14_id => turn14_id, :item_type => item_type, :product_name => product_name, :part_number => part_number, :mpn => mpn, :part_description => part_description, :category => category, :subcategory => subcategory, :box_number => box_number, :length => length, :width => width, :height => height, :weight => weight, :brand_id => brand_id, :brand => brand, :price_group_id => price_group_id, :status => status, :regular_stock => regular_stock, :dropship_controller_id => dropship_controller_id, :air_freight_prohibited => air_freight_prohibited, :not_carb_approved => not_carb_approved, :carb_acknowledgement_required => carb_acknowledgement_required, :ltl_freight_required => ltl_freight_required, :prop_65 => prop_65, :epa => epa, :units_per_sku => units_per_sku, :clearance_item => clearance_item, :barcode => barcode)
+			          Turn14Product.create(:turn14_id => turn14_id, :item_type => item_type, :product_name => product_name, :part_number => part_number, :mpn => mpn, :part_description => part_description, :category => category_name, :subcategory => subcategory, :box_number => box_number, :length => length, :width => width, :height => height, :weight => weight, :brand_id => brand_id, :brand => brand, :price_group_id => price_group_id, :status => status, :regular_stock => regular_stock, :dropship_controller_id => dropship_controller_id, :air_freight_prohibited => air_freight_prohibited, :not_carb_approved => not_carb_approved, :carb_acknowledgement_required => carb_acknowledgement_required, :ltl_freight_required => ltl_freight_required, :prop_65 => prop_65, :epa => epa, :units_per_sku => units_per_sku, :clearance_item => clearance_item, :barcode => barcode)
+			          category = Category.find_or_create_by(:name=>category_name)
+			          sub_category = SubCategory.find_or_create_by(:name=>subcategory)
+			          brand_data = Turn14Brand.find_by(:brand_id=>brand_id)
+			          aaia_code = brand_data['aaia_code']
+			          rva_id = aaia_code + '-' + barcode
+			          product_data = Product.where(:upc => barcode, :rva_id => rva_id)
+			          if product_data.empty?
+			          	Product.create(:turn14_id => turn14_id, :product_name => product_name, :part_number => part_number, :mpn => mpn, :category_id => category.id, :sub_category_id => sub_category.id, :brand => brand, :upc => barcode, :rva_id => rva_id)
+			          end
 			        end
 		      	rescue Exception => e
 		      		$logger.error "Error Occured in getting details in product #{turn14_id} -- #{e}"
