@@ -1,5 +1,5 @@
 class SubCategory < ApplicationRecord
-	has_many :category
+	has_and_belongs_to_many :category
 	has_many :product
 	before_create :create_slug
 	def create_slug

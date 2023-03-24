@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/about-us' => 'home#about_us'
   get '/contact' => 'home#contact'
+  get '/blogs' => 'home#blogs'
+  get '/dashboard' => 'dashboard#index'
 end
